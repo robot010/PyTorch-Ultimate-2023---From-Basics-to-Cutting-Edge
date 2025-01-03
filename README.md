@@ -1,6 +1,5 @@
-# PytorchUltimate
-
-This repo holds material for the Udemy course _**PyTorch Ultimate: From Basics to Cutting-Edge**_. You can find the course under [this link](https://www.udemy.com/course/pytorch-ultimate/).
+# PyTorch Ultimate 2024 - From Basics to Cutting-Edge
+PyTorch Ultimate 2024 - From Basics to Cutting-Edge, Published by Packt Publishing
 
 ## Environment Installation from yml file
 
