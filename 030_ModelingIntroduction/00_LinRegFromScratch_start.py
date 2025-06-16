@@ -39,7 +39,7 @@ for epoch in range(num_epoch):
         # extract losses
         loss_value = loss_tensor.data[0]
         # update w and b
-        with torch.no_gard():
+        with torch.no_grad():
             w -= w.grad * learning_rate
             b -= b.grad * learning_rate
             w.grad.zero_() # _ means inplace ops
@@ -48,9 +48,9 @@ for epoch in range(num_epoch):
 
 #%% check results
 # %%
-
+print(f"Weight: {w.item()}, Bias: {b.item()}")
 # %% (Statistical) Linear Regression
-
+y_pred = ((X * w) + b).detach().numpy()
 
 # %% create graph visualisation
 # make sure GraphViz is installed (https://graphviz.org/download/)
@@ -60,3 +60,11 @@ for epoch in range(num_epoch):
 # os.environ['PATH'] += os.pathsep + 'C:/Program Files (x86)/Graphviz/bin'
 # make_dot(loss_tensor)
 # %%
+sns.scatterplot(x=X_list, y=y_list)
+sns.lineplot(x=X_list, y=y_pred.reshape(-1))
+
+# %%
+from sklearn.linear_model import LinearRegression
+
+reg = LinearRegression().fit(X_np, y_list)
+print(f"Slope: {reg.coef_}, Intercept: {reg.intercept_}")
